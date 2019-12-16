@@ -17,29 +17,45 @@ class Dashboard extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Image.asset('images/bytebank_logo.png'),
           ),
-          Row(
-            children: <Widget>[
-              _BotaoRecurso('Transferir',Icons.monetization_on),
-              _BotaoRecurso('Transferências', Icons.description)
-            ],
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: <Widget>[
+                _BotaoRecurso('Transferir', Icons.monetization_on,
+                    callbackClique: () {
+                  _redirecionarListaDeContatos(context);
+                }),
+                _BotaoRecurso(
+                  'Transferências',
+                  Icons.description,
+                  callbackClique: () {
+                    debugPrint("cliquei no icone de transferências");
+                  },
+                )
+              ],
+            ),
           )
         ],
       ),
     );
   }
+
+  void _redirecionarListaDeContatos(BuildContext context) {
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (context) => ListaContatos()));
+  }
 }
 
 class _BotaoRecurso extends StatelessWidget {
-
   final String _nome;
   final IconData _icone;
+  final Function callbackClique;
 
-
-  _BotaoRecurso(this._nome, this._icone);
+  _BotaoRecurso(this._nome, this._icone, {@required this.callbackClique});
 
   @override
   Widget build(BuildContext context) {
-    return              Padding(
+    return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
         decoration: const BoxDecoration(
@@ -53,8 +69,7 @@ class _BotaoRecurso extends StatelessWidget {
         child: Material(
           color: Theme.of(context).primaryColor,
           child: InkWell(
-            onTap: () => Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => ListaContatos())),
+            onTap: () => callbackClique(),
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Container(
@@ -73,8 +88,7 @@ class _BotaoRecurso extends StatelessWidget {
                       ),
                       Text(
                         _nome,
-                        style:
-                        TextStyle(color: Colors.white, fontSize: 15),
+                        style: TextStyle(color: Colors.white, fontSize: 15),
                       )
                     ],
                   ),
