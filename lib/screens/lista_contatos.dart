@@ -1,6 +1,6 @@
 import 'package:bytebank/database/app_database.dart';
 import 'package:bytebank/database/dao/contato_dao.dart';
-import 'package:bytebank/models/contato.dart';
+import 'package:bytebank/models/contact.dart';
 import 'package:bytebank/screens/formulario_contato.dart';
 import 'package:flutter/material.dart';
 
@@ -35,10 +35,10 @@ class ListaContatos extends StatelessWidget {
               case ConnectionState.active:
                 break;
               case ConnectionState.done:
-                List<Contato> contatos = snapshot.data;
+                List<Contact> contatos = snapshot.data;
                 return ListView.builder(
                   itemBuilder: (context, index) {
-                    final Contato contato = contatos[index];
+                    final Contact contato = contatos[index];
                     return _itemContato(contato);
                   },
                   itemCount: contatos.length,
@@ -59,7 +59,7 @@ class ListaContatos extends StatelessWidget {
 }
 
 class _itemContato extends StatelessWidget {
-  final Contato contato;
+  final Contact contato;
 
   _itemContato(this.contato);
 
@@ -68,7 +68,7 @@ class _itemContato extends StatelessWidget {
     return Card(
       child: ListTile(
         title: Text(
-          contato.nome,
+          contato.name,
           style: TextStyle(fontSize: 24),
         ),
         subtitle: Text(

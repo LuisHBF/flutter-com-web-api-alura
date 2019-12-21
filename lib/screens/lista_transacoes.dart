@@ -1,20 +1,20 @@
-import 'package:bytebank/models/contato.dart';
-import 'package:bytebank/models/transacao.dart';
+import 'package:bytebank/models/contact.dart';
+import 'package:bytebank/models/transaction.dart';
 import 'package:flutter/material.dart';
 
 class ListaTransacoes extends StatelessWidget {
-  final List<Transacao> transacoes = List();
+  final List<Transaction> transacoes = List();
 
   @override
   Widget build(BuildContext context) {
-    transacoes.add(Transacao(100.0, Contato(0, 'Luis', 2414)));
+    transacoes.add(Transaction(100.0, Contact(0, 'Luis', 2414)));
     return Scaffold(
       appBar: AppBar(
         title: Text('Transações'),
       ),
       body: ListView.builder(
         itemBuilder: (context, index) {
-          final Transacao transaction = transacoes[index];
+          final Transaction transaction = transacoes[index];
           return Card(
             child: ListTile(
               leading: Icon(Icons.monetization_on),
@@ -26,7 +26,7 @@ class ListaTransacoes extends StatelessWidget {
                 ),
               ),
               subtitle: Text(
-                transaction.contato.numero.toString(),
+                transaction.contact.numero.toString(),
                 style: TextStyle(
                   fontSize: 16.0,
                 ),

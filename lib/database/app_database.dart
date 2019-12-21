@@ -1,4 +1,4 @@
-import 'package:bytebank/models/contato.dart';
+import 'package:bytebank/models/contact.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 

@@ -1,5 +1,5 @@
 import 'package:bytebank/database/app_database.dart';
-import 'package:bytebank/models/contato.dart';
+import 'package:bytebank/models/contact.dart';
 import 'package:sqflite/sqflite.dart';
 
 class ContatoDAO{
@@ -14,30 +14,30 @@ class ContatoDAO{
   static const String _nome = 'nome';
   static const String _numeroConta = 'numero_conta';
 
-  Future<int> salvar(Contato contato) async {
+  Future<int> salvar(Contact contato) async {
     final Database bd = await criarBanco(ContatoDAO.sqlTabela);
     Map<String, dynamic> mapContato = _toMap(contato);
     return bd.insert(_nomeTabela, mapContato);
   }
 
-  Future<List<Contato>> todos() async{
+  Future<List<Contact>> todos() async{
     final Database bd = await criarBanco(ContatoDAO.sqlTabela);
     final List<Map<String,dynamic>> resultado = await bd.query(_nomeTabela);
-    List<Contato> contatos = _toList(resultado);
+    List<Contact> contatos = _toList(resultado);
     return contatos;
   }
 
-  List<Contato> _toList(List<Map<String, dynamic>> resultado) {
-    final List<Contato> contatos = List();
+  List<Contact> _toList(List<Map<String, dynamic>> resultado) {
+    final List<Contact> contatos = List();
     resultado.forEach((map) {
-      contatos.add(Contato(map[_id], map[_nome], map[_numeroConta]));
+      contatos.add(Contact(map[_id], map[_nome], map[_numeroConta]));
     });
     return contatos;
   }
 
-  Map<String, dynamic> _toMap(Contato contato) {
+  Map<String, dynamic> _toMap(Contact contato) {
     Map<String, dynamic> mapContato = Map();
-    mapContato[_nome] = contato.nome;
+    mapContato[_nome] = contato.name;
     mapContato[_numeroConta] = contato.numero;
     return mapContato;
   }
