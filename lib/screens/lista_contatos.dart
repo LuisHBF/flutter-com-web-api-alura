@@ -72,7 +72,7 @@ class _itemContato extends StatelessWidget {
           style: TextStyle(fontSize: 24),
         ),
         subtitle: Text(
-          contato.numero.toString(),
+          contato.accountNumber.toString(),
           style: TextStyle(fontSize: 16),
         ),
       ),

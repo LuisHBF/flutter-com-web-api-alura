@@ -1,4 +1,5 @@
 import 'package:bytebank/database/app_database.dart';
+import 'package:bytebank/http/webclient.dart';
 import 'package:bytebank/models/contact.dart';
 import 'package:bytebank/screens/dashboard.dart';
 import 'package:bytebank/screens/formulario_contato.dart';
@@ -7,6 +8,7 @@ import 'package:flutter/material.dart';
 
 void main() {
   runApp(BytebankApp());
+  todasTransacoes();
 }
 
 class BytebankApp extends StatelessWidget {

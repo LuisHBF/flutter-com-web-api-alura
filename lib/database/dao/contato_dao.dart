@@ -38,7 +38,7 @@ class ContatoDAO{
   Map<String, dynamic> _toMap(Contact contato) {
     Map<String, dynamic> mapContato = Map();
     mapContato[_nome] = contato.name;
-    mapContato[_numeroConta] = contato.numero;
+    mapContato[_numeroConta] = contato.accountNumber;
     return mapContato;
   }
 

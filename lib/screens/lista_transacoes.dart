@@ -26,7 +26,7 @@ class ListaTransacoes extends StatelessWidget {
                 ),
               ),
               subtitle: Text(
-                transaction.contact.numero.toString(),
+                transaction.contact.accountNumber.toString(),
                 style: TextStyle(
                   fontSize: 16.0,
                 ),
